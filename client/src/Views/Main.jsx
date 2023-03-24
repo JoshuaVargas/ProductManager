@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Main = () => {
 
@@ -57,10 +58,10 @@ const Main = () => {
             </form>
 
             <hr />
-            <h1>All Products</h1>
+            <h2>All Products</h2>
             <div>{products.map((product, idx) => (
                 <li key={idx}>
-                    {product.title}
+                    <Link to={`/product/details/${product._id}`}>{product.title}</Link>
                 </li>
             ))}</div>
 
