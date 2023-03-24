@@ -56,7 +56,8 @@ const Main = () => {
                 </div>
             </form>
 
-            <div>----------------------------</div>
+            <hr />
+            <h1>All Products</h1>
             <div>{products.map((product, idx) => (
                 <li key={idx}>
                     {product.title}
