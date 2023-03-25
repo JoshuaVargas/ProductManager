@@ -35,6 +35,18 @@ const Main = () => {
                 console.log("We ain't in it!")
                 console.log(error)})
     }
+
+    const handleDelete = (deleteId) => {
+        axios.delete(`http://localhost:8000/api/products/${deleteId}`)
+            .then(response => {
+                console.log(response.data)
+                const filteredProducts = products.filter((product)=>product._id !== deleteId)
+                setProducts(filteredProducts)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     
     return (
         <div>
@@ -62,6 +74,10 @@ const Main = () => {
             <div>{products.map((product, idx) => (
                 <li key={idx}>
                     <Link to={`/product/details/${product._id}`}>{product.title}</Link>
+                    <span> | </span>
+                    <Link to={`/product/update/${product._id}`}>Edit</Link>
+                    <span> | </span>
+                    <button onClick={()=>handleDelete(product._id)}>Delete</button>
                 </li>
             ))}</div>
 
